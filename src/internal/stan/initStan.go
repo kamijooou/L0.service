@@ -54,12 +54,7 @@ func Connect(ctx context.Context) (*Connection, error) {
 		logger.Error("STAN error:", zap.Error(err))
 		return nil, err
 	}
-	logger.Info(
-		"STAN connected to:",
-		zap.String("URL", URL),
-		zap.String("clusterID", clusterID),
-		zap.String("clientID", clientID),
-	)
+	logger.Sugar().Infof("STAN connected to URL (%s) clusterID (%s) clientID (%s)", URL, clusterID, clientID)
 
 	return &Connection{sc, nc}, nil
 }
