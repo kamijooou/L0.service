@@ -2,12 +2,14 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 
 	"github.com/kamijooou/L0.service/internal/stan"
+	"github.com/kamijooou/L0.service/internal/validator"
 	"github.com/kamijooou/L0.service/pkg/log"
 
 	"go.uber.org/zap"
@@ -45,7 +47,11 @@ func main() {
 	for {
 		select {
 		case msg := <-msgCh:
-			fmt.Println(string(msg))
+			msgStruct := &validator.Order{}
+			if err := json.Unmarshal(msg, msgStruct); err != nil {
+				logger.Error("JSON data error:", zap.Error(err))
+			}
+			fmt.Println(*msgStruct, *msgStruct.Delivery, *msgStruct.Payment)
 		case <-ctx.Done():
 			return
 		}
