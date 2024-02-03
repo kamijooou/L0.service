@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"regexp"
+	"time"
 
 	"github.com/kamijooou/L0.service/pkg/log"
 )
@@ -130,6 +131,11 @@ func (msg *Order) Validate(ctx context.Context) error {
 
 	if msg.SmID == 0 {
 		return errors.New("sm_id is emty")
+	}
+
+	var zeroTime time.Time
+	if msg.DateCreated == zeroTime {
+		return errors.New("date_created is empty")
 	}
 
 	if err := msg.Delivery.validateDelivery(); err != nil {

@@ -8,6 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/jackc/pgx/v5"
+	"github.com/kamijooou/L0.service/internal/postgres"
 	"github.com/kamijooou/L0.service/internal/stan"
 	"github.com/kamijooou/L0.service/internal/validator"
 	"github.com/kamijooou/L0.service/pkg/log"
@@ -15,7 +17,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func listen(ctx context.Context, msg <-chan []byte) {
+func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 	logger := log.LoggerFromContext(ctx)
 	logger.Info("Listening for messages...")
 
@@ -26,10 +28,16 @@ func listen(ctx context.Context, msg <-chan []byte) {
 				msgStruct := &validator.Order{}
 				if err := json.Unmarshal(msg, msgStruct); err != nil {
 					logger.Error("JSON bad data:", zap.Error(err))
+					break
 				}
 
 				if err := msgStruct.Validate(ctx); err != nil {
 					logger.Error("Validation error:", zap.Error(err))
+					break
+				}
+
+				if err := postgres.Create(ctx, conn, msgStruct); err != nil {
+					logger.Error("postgres.Create() error")
 				}
 			case <-ctx.Done():
 				logger.Info("Stop listening...")
@@ -37,10 +45,10 @@ func listen(ctx context.Context, msg <-chan []byte) {
 			}
 		}
 	}()
-
 }
 
 func main() {
+	fmt.Println("Starting L0.service...")
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	defer fmt.Println("Service stopped. Good bye...")
@@ -51,22 +59,28 @@ func main() {
 		return
 	}
 	defer logger.Sync()
-	logger.Info("Starting L0.service...")
 
 	logCtx := log.ContextWithLogger(ctx, logger)
 
-	conn, err := stan.Connect(logCtx)
+	pgxConn, err := postgres.Connect(logCtx)
+	if err != nil {
+		logger.Error("PGX error")
+		return
+	}
+	defer postgres.Close(logCtx, pgxConn)
+
+	stanConn, err := stan.Connect(logCtx)
 	if err != nil {
 		logger.Error("STAN error")
 		return
 	}
-	defer stan.Close(logCtx, conn.SC, conn.NC)
+	defer stan.Close(logCtx, stanConn.SC, stanConn.NC)
 
-	msgCh, err := conn.Subcribe(logCtx)
+	msgCh, err := stanConn.Subcribe(logCtx)
 	if err != nil {
 		logger.Error("Subscribe error")
 		return
 	}
 
-	listen(logCtx, msgCh)
+	listen(logCtx, msgCh, pgxConn)
 }
