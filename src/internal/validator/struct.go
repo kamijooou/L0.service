@@ -4,17 +4,17 @@ import "time"
 
 // TODO: implement the comments tasks in struct fields
 type Item struct {
-	ChrtID      uint64 `json:"chrt_id"`
+	ChrtID      int64  `json:"chrt_id"`
 	TrackNumber string `json:"track_number"`
-	Price       uint64 `json:"price"`
+	Price       int64  `json:"price"`
 	RID         string `json:"rid"`
 	Name        string `json:"name"`
-	Sale        uint64 `json:"sale"`
+	Sale        int64  `json:"sale"`
 	Size        string `json:"size"`
-	TotalPrice  uint64 `json:"total_price"`
-	NmID        uint64 `json:"nm_id"`
+	TotalPrice  int64  `json:"total_price"`
+	NmID        int64  `json:"nm_id"`
 	Brand       string `json:"brand"`
-	Status      uint64 `json:"status"`
+	Status      int64  `json:"status"`
 }
 
 type Payment struct {
@@ -22,12 +22,12 @@ type Payment struct {
 	RequestID    string `json:"request_id"`
 	Currency     string `json:"currency"`
 	Provider     string `json:"provider"`
-	Amount       uint64 `json:"amount"`
-	PaymentDT    uint64 `json:"payment_dt"`
+	Amount       int64  `json:"amount"`
+	PaymentDT    int64  `json:"payment_dt"`
 	Bank         string `json:"bank"`
-	DeliveryCost uint64 `json:"delivery_cost"`
-	GoodsTotal   uint64 `json:"goods_total"`
-	CustomFee    uint64 `json:"custom_fee"`
+	DeliveryCost int64  `json:"delivery_cost"`
+	GoodsTotal   int64  `json:"goods_total"`
+	CustomFee    int64  `json:"custom_fee"`
 }
 
 type Delivery struct {
@@ -52,7 +52,7 @@ type Order struct {
 	CustomerID        string    `json:"customer_id"`
 	DeliveryService   string    `json:"delivery_service"`
 	ShardKey          string    `json:"shardkey"`
-	SmID              uint64    `json:"sm_id"`
+	SmID              int64     `json:"sm_id"`
 	DateCreated       time.Time `json:"date_created"`
 	OofShard          string    `json:"oof_shard"`
 }

@@ -1,6 +1,6 @@
 package sql
 
-var InsertOrder = `
+const InsertOrderSQL = `
 insert into orders (
     order_uid,
     track_number,
@@ -29,7 +29,7 @@ values (
 );
 `
 
-var InsertDelivery = `
+const InsertDeliverySQL = `
 insert into deliveries (
     order_id,
     name,
@@ -52,7 +52,7 @@ values (
 );
 `
 
-var InsertPayment = `
+const InsertPaymentSQL = `
 insert into payments (
     transaction,
     request_id,
@@ -79,7 +79,7 @@ values (
 );
 `
 
-var InsertItem = `
+const InsertItemSQL = `
 insert into items (
     chrt_id,
     track_number,

@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/kamijooou/L0.service/internal/cache"
 	"github.com/kamijooou/L0.service/internal/postgres"
 	"github.com/kamijooou/L0.service/internal/stan"
 	"github.com/kamijooou/L0.service/internal/validator"
@@ -38,7 +39,9 @@ func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 
 				if err := postgres.Create(ctx, conn, msgStruct); err != nil {
 					logger.Error("postgres.Create() error")
+					break
 				}
+				cache.CACHE[msgStruct.OrderUID] = msgStruct
 			case <-ctx.Done():
 				logger.Info("Stop listening...")
 				return
@@ -68,6 +71,11 @@ func main() {
 		return
 	}
 	defer postgres.Close(logCtx, pgxConn)
+
+	if err := cache.Init(logCtx, pgxConn); err != nil {
+		logger.Error("Cache intialization error")
+		return
+	}
 
 	stanConn, err := stan.Connect(logCtx)
 	if err != nil {

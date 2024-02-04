@@ -10,8 +10,8 @@ import (
 )
 
 func (i Item) validate(trackNum string) error {
-	if i.ChrtID == 0 {
-		return errors.New("item.chrt_id is empty")
+	if i.ChrtID <= 0 {
+		return errors.New("bad item.chrt_id")
 	}
 
 	if i.TrackNumber != trackNum {
@@ -26,12 +26,12 @@ func (i Item) validate(trackNum string) error {
 		return errors.New("item.name is empty")
 	}
 
-	if i.NmID == 0 {
-		return errors.New("item.nm_id is empty")
+	if i.NmID <= 0 {
+		return errors.New("bad item.nm_id")
 	}
 
-	if i.Status == 0 {
-		return errors.New("item.status is empty")
+	if i.Status <= 0 {
+		return errors.New("bad item.status")
 	}
 
 	return nil
@@ -61,12 +61,12 @@ func (p *Payment) validatePayment(uid string) error {
 		return errors.New("payment.provider is empty")
 	}
 
-	if p.Amount == 0 {
-		return errors.New("payment.amount is empty")
+	if p.Amount <= 0 {
+		return errors.New("bad payment.amount")
 	}
 
-	if p.PaymentDT == 0 {
-		return errors.New("payment.payment_dt is empty")
+	if p.PaymentDT <= 0 {
+		return errors.New("bad payment.payment_dt")
 	}
 
 	if p.Bank == "" {
@@ -129,8 +129,8 @@ func (msg *Order) Validate(ctx context.Context) error {
 		return errors.New("customer_id is empty")
 	}
 
-	if msg.SmID == 0 {
-		return errors.New("sm_id is emty")
+	if msg.SmID <= 0 {
+		return errors.New("bad sm_id")
 	}
 
 	var zeroTime time.Time

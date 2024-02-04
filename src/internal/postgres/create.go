@@ -13,7 +13,7 @@ import (
 func insertItem(ctx context.Context, tx pgx.Tx, item validator.Item) error {
 	_, err := tx.Exec(
 		ctx,
-		sql.InsertItem,
+		sql.InsertItemSQL,
 		item.ChrtID,
 		item.TrackNumber,
 		item.Price,
@@ -36,7 +36,7 @@ func insertItem(ctx context.Context, tx pgx.Tx, item validator.Item) error {
 func insertPayment(ctx context.Context, tx pgx.Tx, pay *validator.Payment) error {
 	_, err := tx.Exec(
 		ctx,
-		sql.InsertPayment,
+		sql.InsertPaymentSQL,
 		pay.Transaction,
 		pay.RequestID,
 		pay.Currency,
@@ -58,7 +58,7 @@ func insertPayment(ctx context.Context, tx pgx.Tx, pay *validator.Payment) error
 func insertDelivery(ctx context.Context, tx pgx.Tx, del *validator.Delivery) error {
 	_, err := tx.Exec(
 		ctx,
-		sql.InsertDelivery,
+		sql.InsertDeliverySQL,
 		del.Name,
 		del.Phone,
 		del.Zip,
@@ -77,7 +77,7 @@ func insertDelivery(ctx context.Context, tx pgx.Tx, del *validator.Delivery) err
 func insertOrder(ctx context.Context, tx pgx.Tx, ord *validator.Order) error {
 	_, err := tx.Exec(
 		ctx,
-		sql.InsertOrder,
+		sql.InsertOrderSQL,
 		ord.OrderUID,
 		ord.TrackNumber,
 		ord.Entry,
