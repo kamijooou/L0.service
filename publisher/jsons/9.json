@@ -1,0 +1,62 @@
+{
+  "order_uid": "i3d4e5f6a1b2c",
+  "track_number": "WBILMTESTTRACK9",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Ivy White",
+    "phone": "+333333333",
+    "zip": "444444",
+    "city": "Whiteland",
+    "address": "9 Snow Street",
+    "region": "Snowy Region",
+    "email": "ivy.white@example.com"
+  },
+  "payment": {
+    "transaction": "i3d4e5f6a1b2c",
+    "request_id": "req333",
+    "currency": "USD",
+    "provider": "wbpay",
+    "amount": 3500,
+    "payment_dt": 1643467200,
+    "bank": "gamma",
+    "delivery_cost": 3200,
+    "goods_total": 400,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 999000,
+      "track_number": "WBILMTESTTRACK9",
+      "price": 250,
+      "rid": "abcdef999000",
+      "name": "Snowy Item 1",
+      "sale": 50,
+      "size": "S",
+      "total_price": 250,
+      "nm_id": 111222,
+      "brand": "Snowy Brand",
+      "status": 211
+    },
+    {
+      "chrt_id": 111222,
+      "track_number": "WBILMTESTTRACK9",
+      "price": 250,
+      "rid": "abcdef111222",
+      "name": "Snowy Item 2",
+      "sale": 50,
+      "size": "M",
+      "total_price": 250,
+      "nm_id": 222333,
+      "brand": "Snowy Brand",
+      "status": 212
+    }
+  ],
+  "locale": "es",
+  "internal_signature": "sig333",
+  "customer_id": "ivy_white",
+  "delivery_service": "snowy_service",
+  "shardkey": "1",
+  "sm_id": 11,
+  "date_created": "2022-02-07T17:00:00Z",
+  "oof_shard": "9"
+}

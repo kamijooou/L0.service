@@ -1,0 +1,62 @@
+{
+  "order_uid": "h2c3d4e5f6a1b",
+  "track_number": "WBILMTESTTRACK8",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Harry Brown",
+    "phone": "+222222222",
+    "zip": "333333",
+    "city": "Magical City",
+    "address": "8 Wizard Street",
+    "region": "Enchanted Region",
+    "email": "harry.brown@example.com"
+  },
+  "payment": {
+    "transaction": "h2c3d4e5f6a1b",
+    "request_id": "req222",
+    "currency": "EUR",
+    "provider": "wbeuro",
+    "amount": 3200,
+    "payment_dt": 1643467200,
+    "bank": "phi",
+    "delivery_cost": 2900,
+    "goods_total": 400,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 555666,
+      "track_number": "WBILMTESTTRACK8",
+      "price": 200,
+      "rid": "abcdef555666",
+      "name": "Magical Item 1",
+      "sale": 45,
+      "size": "L",
+      "total_price": 200,
+      "nm_id": 666777,
+      "brand": "Magical Brand",
+      "status": 209
+    },
+    {
+      "chrt_id": 777888,
+      "track_number": "WBILMTESTTRACK8",
+      "price": 200,
+      "rid": "abcdef777888",
+      "name": "Magical Item 2",
+      "sale": 45,
+      "size": "XL",
+      "total_price": 200,
+      "nm_id": 888999,
+      "brand": "Magical Brand",
+      "status": 210
+    }
+  ],
+  "locale": "de",
+  "internal_signature": "sig222",
+  "customer_id": "harry_brown",
+  "delivery_service": "magical_service",
+  "shardkey": "2",
+  "sm_id": 22,
+  "date_created": "2022-02-06T13:45:00Z",
+  "oof_shard": "8"
+}

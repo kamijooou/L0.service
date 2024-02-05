@@ -1,0 +1,49 @@
+{
+  "order_uid": "d4e5f6a1b2c3",
+  "track_number": "WBILMTESTTRACK4",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Bob Smith",
+    "phone": "+444444444",
+    "zip": "987654",
+    "city": "Exampleville",
+    "address": "789 Main Street",
+    "region": "Test Region",
+    "email": "bob@example.com"
+  },
+  "payment": {
+    "transaction": "d4e5f6a1b2c3",
+    "request_id": "req012",
+    "currency": "CAD",
+    "provider": "wbdollar",
+    "amount": 2200,
+    "payment_dt": 1643467200,
+    "bank": "delta",
+    "delivery_cost": 2000,
+    "goods_total": 200,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 789012,
+      "track_number": "WBILMTESTTRACK4",
+      "price": 100,
+      "rid": "abcdef789012",
+      "name": "Test Item",
+      "sale": 25,
+      "size": "XL",
+      "total_price": 200,
+      "nm_id": 123789,
+      "brand": "Test Brand",
+      "status": 204
+    }
+  ],
+  "locale": "de",
+  "internal_signature": "sig012",
+  "customer_id": "bob",
+  "delivery_service": "test_service",
+  "shardkey": "6",
+  "sm_id": 66,
+  "date_created": "2022-02-02T09:30:00Z",
+  "oof_shard": "4"
+}

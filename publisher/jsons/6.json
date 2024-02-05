@@ -1,0 +1,49 @@
+{
+  "order_uid": "f6a1b2c3d4e5",
+  "track_number": "WBILMTESTTRACK6",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Frank Black",
+    "phone": "+777777777",
+    "zip": "111111",
+    "city": "Black City",
+    "address": "1 Dark Street",
+    "region": "Dark Region",
+    "email": "frank.black@example.com"
+  },
+  "payment": {
+    "transaction": "f6a1b2c3d4e5",
+    "request_id": "req777",
+    "currency": "USD",
+    "provider": "wbpay",
+    "amount": 2700,
+    "payment_dt": 1643467200,
+    "bank": "phi",
+    "delivery_cost": 2400,
+    "goods_total": 300,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 777888,
+      "track_number": "WBILMTESTTRACK6",
+      "price": 200,
+      "rid": "abcdef777888",
+      "name": "Black Item",
+      "sale": 35,
+      "size": "XXL",
+      "total_price": 300,
+      "nm_id": 888999,
+      "brand": "Black Brand",
+      "status": 206
+    }
+  ],
+  "locale": "es",
+  "internal_signature": "sig777",
+  "customer_id": "frank_black",
+  "delivery_service": "black_service",
+  "shardkey": "4",
+  "sm_id": 44,
+  "date_created": "2022-02-04T16:00:00Z",
+  "oof_shard": "6"
+}

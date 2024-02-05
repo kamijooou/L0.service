@@ -1,0 +1,62 @@
+{
+  "order_uid": "j4e5f6a1b2c3d",
+  "track_number": "WBILMTESTTRACK10",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Jack Black",
+    "phone": "+444444444",
+    "zip": "555555",
+    "city": "Blacktown",
+    "address": "10 Dark Alley",
+    "region": "Dark Region",
+    "email": "jack.black@example.com"
+  },
+  "payment": {
+    "transaction": "j4e5f6a1b2c3d",
+    "request_id": "req444",
+    "currency": "GBP",
+    "provider": "wbpound",
+    "amount": 3800,
+    "payment_dt": 1643467200,
+    "bank": "phi",
+    "delivery_cost": 3500,
+    "goods_total": 500,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 333444,
+      "track_number": "WBILMTESTTRACK10",
+      "price": 300,
+      "rid": "abcdef333444",
+      "name": "Dark Item 1",
+      "sale": 55,
+      "size": "L",
+      "total_price": 300,
+      "nm_id": 444555,
+      "brand": "Dark Brand",
+      "status": 213
+    },
+    {
+      "chrt_id": 555666,
+      "track_number": "WBILMTESTTRACK10",
+      "price": 300,
+      "rid": "abcdef555666",
+      "name": "Dark Item 2",
+      "sale": 55,
+      "size": "XL",
+      "total_price": 300,
+      "nm_id": 666777,
+      "brand": "Dark Brand",
+      "status": 214
+    }
+  ],
+  "locale": "fr",
+  "internal_signature": "sig444",
+  "customer_id": "jack_black",
+  "delivery_service": "dark_service",
+  "shardkey": "10",
+  "sm_id": 10,
+  "date_created": "2022-02-08T10:15:00Z",
+  "oof_shard": "10"
+}

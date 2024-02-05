@@ -1,0 +1,49 @@
+{
+  "order_uid": "b2c3d4e5f6a1",
+  "track_number": "WBILMTESTTRACK2",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Jane Doe",
+    "phone": "+987654321",
+    "zip": "654321",
+    "city": "Another City",
+    "address": "456 Oak Street",
+    "region": "Another Region",
+    "email": "jane.doe@example.com"
+  },
+  "payment": {
+    "transaction": "b2c3d4e5f6a1",
+    "request_id": "req456",
+    "currency": "EUR",
+    "provider": "wbeuro",
+    "amount": 1800,
+    "payment_dt": 1643467200,
+    "bank": "beta",
+    "delivery_cost": 1500,
+    "goods_total": 300,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 789012,
+      "track_number": "WBILMTESTTRACK2",
+      "price": 150,
+      "rid": "123456abcdef",
+      "name": "Another Item",
+      "sale": 15,
+      "size": "L",
+      "total_price": 300,
+      "nm_id": 123456,
+      "brand": "Another Brand",
+      "status": 201
+    }
+  ],
+  "locale": "fr",
+  "internal_signature": "sig456",
+  "customer_id": "jane_doe",
+  "delivery_service": "another_service",
+  "shardkey": "8",
+  "sm_id": 88,
+  "date_created": "2022-01-31T14:30:00Z",
+  "oof_shard": "2"
+}

@@ -1,0 +1,62 @@
+{
+  "order_uid": "g1b2c3d4e5f6a",
+  "track_number": "WBILMTESTTRACK7",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Grace Taylor",
+    "phone": "+111111111",
+    "zip": "222222",
+    "city": "Graceful City",
+    "address": "7 Serene Street",
+    "region": "Calm Region",
+    "email": "grace.taylor@example.com"
+  },
+  "payment": {
+    "transaction": "g1b2c3d4e5f6a",
+    "request_id": "req111",
+    "currency": "USD",
+    "provider": "wbpay",
+    "amount": 3000,
+    "payment_dt": 1643467200,
+    "bank": "gamma",
+    "delivery_cost": 2700,
+    "goods_total": 300,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 111222,
+      "track_number": "WBILMTESTTRACK7",
+      "price": 150,
+      "rid": "abcdef111222",
+      "name": "Graceful Item 1",
+      "sale": 40,
+      "size": "S",
+      "total_price": 150,
+      "nm_id": 222333,
+      "brand": "Graceful Brand",
+      "status": 207
+    },
+    {
+      "chrt_id": 333444,
+      "track_number": "WBILMTESTTRACK7",
+      "price": 150,
+      "rid": "abcdef333444",
+      "name": "Graceful Item 2",
+      "sale": 40,
+      "size": "M",
+      "total_price": 150,
+      "nm_id": 444555,
+      "brand": "Graceful Brand",
+      "status": 208
+    }
+  ],
+  "locale": "fr",
+  "internal_signature": "sig111",
+  "customer_id": "grace_taylor",
+  "delivery_service": "graceful_service",
+  "shardkey": "3",
+  "sm_id": 33,
+  "date_created": "2022-02-05T10:30:00Z",
+  "oof_shard": "7"
+}

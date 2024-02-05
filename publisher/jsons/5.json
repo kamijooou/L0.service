@@ -1,0 +1,49 @@
+{
+  "order_uid": "e5f6a1b2c3d4",
+  "track_number": "WBILMTESTTRACK5",
+  "entry": "WBIL",
+  "delivery": {
+    "name": "Eva Green",
+    "phone": "+999999999",
+    "zip": "135790",
+    "city": "Green City",
+    "address": "42 Green Street",
+    "region": "Green Region",
+    "email": "eva.green@example.com"
+  },
+  "payment": {
+    "transaction": "e5f6a1b2c3d4",
+    "request_id": "req135",
+    "currency": "EUR",
+    "provider": "wbeuro",
+    "amount": 2500,
+    "payment_dt": 1643467200,
+    "bank": "epsilon",
+    "delivery_cost": 2200,
+    "goods_total": 300,
+    "custom_fee": 0
+  },
+  "items": [
+    {
+      "chrt_id": 135792,
+      "track_number": "WBILMTESTTRACK5",
+      "price": 200,
+      "rid": "abcdef135792",
+      "name": "Green Item",
+      "sale": 30,
+      "size": "XS",
+      "total_price": 300,
+      "nm_id": 246810,
+      "brand": "Green Brand",
+      "status": 205
+    }
+  ],
+  "locale": "it",
+  "internal_signature": "sig135",
+  "customer_id": "eva_green",
+  "delivery_service": "green_service",
+  "shardkey": "5",
+  "sm_id": 55,
+  "date_created": "2022-02-03T14:15:00Z",
+  "oof_shard": "5"
+}
