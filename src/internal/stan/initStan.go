@@ -11,7 +11,7 @@ import (
 
 var (
 	clusterID, clientID string = "test-cluster", "l0-sub"
-	URL                 string = stan.DefaultNatsURL
+	URL                 string = "nats://stan:4222"
 )
 
 type Connection struct {
