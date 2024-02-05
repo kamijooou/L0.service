@@ -13,6 +13,7 @@ import (
 	"github.com/kamijooou/L0.service/internal/postgres"
 	"github.com/kamijooou/L0.service/internal/stan"
 	"github.com/kamijooou/L0.service/internal/validator"
+	"github.com/kamijooou/L0.service/internal/web"
 	"github.com/kamijooou/L0.service/pkg/log"
 
 	"go.uber.org/zap"
@@ -20,7 +21,7 @@ import (
 
 func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 	logger := log.LoggerFromContext(ctx)
-	logger.Info("Listening for messages...")
+	logger.Info("listening for messages...")
 
 	go func() {
 		for {
@@ -33,7 +34,7 @@ func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 				}
 
 				if err := msgStruct.Validate(ctx); err != nil {
-					logger.Error("Validation error:", zap.Error(err))
+					logger.Error("validation error:", zap.Error(err))
 					break
 				}
 
@@ -43,7 +44,7 @@ func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 				}
 				cache.CACHE[msgStruct.OrderUID] = msgStruct
 			case <-ctx.Done():
-				logger.Info("Stop listening...")
+				logger.Info("stop listening messages...")
 				return
 			}
 		}
@@ -51,10 +52,10 @@ func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 }
 
 func main() {
-	fmt.Println("Starting L0.service...")
+	fmt.Println("starting L0.service...")
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
-	defer fmt.Println("Service stopped. Good bye...")
+	defer fmt.Println("service stopped. Good bye...")
 
 	logger, err := log.NewLogger()
 	if err != nil {
@@ -73,7 +74,7 @@ func main() {
 	defer postgres.Close(logCtx, pgxConn)
 
 	if err := cache.Init(logCtx, pgxConn); err != nil {
-		logger.Error("Cache intialization error")
+		logger.Error("cache intialization error")
 		return
 	}
 
@@ -86,9 +87,15 @@ func main() {
 
 	msgCh, err := stanConn.Subcribe(logCtx)
 	if err != nil {
-		logger.Error("Subscribe error")
+		logger.Error("subscribe error")
 		return
 	}
 
 	listen(logCtx, msgCh, pgxConn)
+
+	server := web.NewServer()
+	server.Run(logCtx)
+
+	<-logCtx.Done()
+	server.Stop(logCtx)
 }

@@ -19,7 +19,6 @@ func (c *Connection) Subcribe(ctx context.Context) (<-chan []byte, error) {
 		msgCh <- msg.Data
 	}
 
-	logger.Info("Subscribe to channel...")
 	_, err := c.SC.Subscribe(
 		channelName,
 		mcb,
@@ -27,9 +26,9 @@ func (c *Connection) Subcribe(ctx context.Context) (<-chan []byte, error) {
 		stan.DurableName(durableName),
 	)
 	if err != nil {
-		logger.Error("Subscribe error:", zap.Error(err))
+		logger.Error("subscribe error:", zap.Error(err))
 		return nil, err
 	}
-	logger.Info("Subscribe was successful!")
+	logger.Info("subscribed to channel")
 	return msgCh, nil
 }

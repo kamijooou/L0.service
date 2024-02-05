@@ -77,7 +77,6 @@ func (p *Payment) validatePayment(uid string) error {
 }
 
 func (d *Delivery) validateDelivery() error {
-
 	if matched, _ := regexp.MatchString(`^\+\d{10}$`, d.Phone); !matched {
 		return errors.New("invalid phone number")
 	}
@@ -103,7 +102,6 @@ func (d *Delivery) validateDelivery() error {
 
 func (msg *Order) Validate(ctx context.Context) error {
 	logger := log.LoggerFromContext(ctx)
-	logger.Info("Start validation...")
 
 	if msg.OrderUID == "" {
 		return errors.New("order_uid is empty")
@@ -150,6 +148,6 @@ func (msg *Order) Validate(ctx context.Context) error {
 		return err
 	}
 
-	logger.Info("Message validation was successful!")
+	logger.Info("message validated")
 	return nil
 }

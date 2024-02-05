@@ -1,6 +1,6 @@
 logger:
   level: debug
-  encoding: console
+  encoding: json
   output_paths: stdout
   error_output_paths: stderr
 encoder:

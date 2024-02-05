@@ -15,7 +15,6 @@ var CACHE = map[string]*validator.Order{}
 
 func Init(ctx context.Context, conn *pgx.Conn) error {
 	logger := log.LoggerFromContext(ctx)
-	logger.Info("Initializing cache...")
 
 	orders, err := postgres.ReadAll(ctx, conn)
 	if err != nil {
@@ -27,7 +26,7 @@ func Init(ctx context.Context, conn *pgx.Conn) error {
 		CACHE[order.OrderUID] = order
 	}
 
-	logger.Info("Cache initialization was successful!")
+	logger.Info("cache initialized")
 	return nil
 }
 
@@ -36,7 +35,7 @@ func Get(ctx context.Context, orderUID string) (*validator.Order, error) {
 
 	result, ok := CACHE[orderUID]
 	if !ok {
-		logger.Error("Cache GET: there is no order with requested UID:", zap.String("UID", orderUID))
+		logger.Error("cache GET: there is no order with requested UID:", zap.String("UID", orderUID))
 		return nil, errors.New("bad order_uid")
 	}
 

@@ -137,6 +137,6 @@ func Create(ctx context.Context, conn *pgx.Conn, msg *validator.Order) error {
 		return err
 	}
 
-	logger.Info("Order was created.")
+	logger.Info("order was created")
 	return nil
 }
