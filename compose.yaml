@@ -1,0 +1,38 @@
+version: '1.0'
+
+services:
+  stan:
+    image: nats-streaming:latest
+    container_name: stan
+    ports:
+      - 4222:4222
+    networks:
+      - l0-net
+  postgres:
+    image: postgres:14
+    container_name: pg
+    environment:
+      - POSTGRES_USER=l0_user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_HOST_AUTH_METHOD=password
+      - PGPORT=5433
+    ports:
+      - 5433:5433
+    networks:
+      - l0-net
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+  server:
+    build: src/
+    container_name: srv
+    depends_on:
+      - postgres
+      - stan
+    restart: always
+    ports:
+      - 8001:8001
+    networks:
+      - l0-net
+networks:
+  l0-net:
+    driver: bridge
