@@ -2,7 +2,6 @@ package validator
 
 import "time"
 
-// TODO: implement the comments tasks in struct fields
 type Item struct {
 	ChrtID      int64  `json:"chrt_id"`
 	TrackNumber string `json:"track_number"`
@@ -41,8 +40,8 @@ type Delivery struct {
 }
 
 type Order struct {
-	OrderUID          string    `json:"order_uid"`    // validate unique from cache
-	TrackNumber       string    `json:"track_number"` // validate unique from cache
+	OrderUID          string    `json:"order_uid"`
+	TrackNumber       string    `json:"track_number"`
 	Entry             string    `json:"entry"`
 	Delivery          *Delivery `json:"delivery"`
 	Payment           *Payment  `json:"payment"`

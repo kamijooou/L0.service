@@ -41,3 +41,10 @@ func Get(ctx context.Context, orderUID string) (*validator.Order, error) {
 
 	return result, nil
 }
+
+func CheckUnique(ctx context.Context, orderUID string) error {
+	if _, ok := CACHE[orderUID]; ok {
+		return errors.New(orderUID)
+	}
+	return nil
+}

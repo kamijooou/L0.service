@@ -33,6 +33,11 @@ func listen(ctx context.Context, msg <-chan []byte, conn *pgx.Conn) {
 					break
 				}
 
+				if err := cache.CheckUnique(ctx, msgStruct.OrderUID); err != nil {
+					logger.Error("order_uid is not unique:", zap.Error(err))
+					break
+				}
+
 				if err := msgStruct.Validate(ctx); err != nil {
 					logger.Error("validation error:", zap.Error(err))
 					break
